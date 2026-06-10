@@ -10,48 +10,48 @@ The system enables organizations to define task eligibility rules and automatica
 
 ## User Management
 
-* User registration
-* User login
-* JWT-based authentication
-* Role support:
+* User Registration
+* User Login
+* JWT-based Authentication
+* Role Support
 
   * ADMIN
   * MANAGER
   * USER
-* User profile updates
-* Automatic eligibility recomputation on user updates
+* User Profile Updates
+* Automatic Eligibility Recalculation on User Updates
 
 ---
 
 ## Task Management
 
-* Create tasks
-* Update tasks
-* Delete tasks
-* Task status tracking
-* Task priorities
-* Due date support
+* Create Tasks
+* Update Tasks
+* Delete Tasks
+* Task Status Tracking
+* Task Priority Management
+* Due Date Support
 
 ---
 
 ## Rule Engine
 
-Configure eligibility rules per task:
+Configure eligibility rules per task using:
 
 * Department
-* Minimum experience
-* Maximum active tasks
+* Minimum Experience
+* Maximum Active Tasks
 * Location
 
 ---
 
 ## Assignment Engine
 
-* Compute eligible users
-* Store assignment results
-* View eligible users for a task
-* View eligible tasks for a user
-* Automatic assignment recomputation
+* Compute Eligible Users
+* Store Assignment Results
+* View Eligible Users for a Task
+* View Eligible Tasks for a User
+* Automatic Assignment Recalculation
 
 ---
 
@@ -59,9 +59,9 @@ Configure eligibility rules per task:
 
 Eligibility is automatically recomputed when:
 
-* A rule is created
-* A rule is updated
-* A user profile is updated
+* A Rule is Created
+* A Rule is Updated
+* A User Profile is Updated
 
 This ensures assignment results remain synchronized with rule changes.
 
@@ -186,7 +186,7 @@ task-management-system/
 
 # Quick Start
 
-## Backend
+## Backend Setup
 
 ```bash
 cd backend
@@ -198,13 +198,13 @@ alembic upgrade head
 uvicorn app.main:app --reload
 ```
 
-Backend:
+Backend URL:
 
 ```text
 http://127.0.0.1:8000
 ```
 
-Swagger:
+Swagger Documentation:
 
 ```text
 http://127.0.0.1:8000/docs
@@ -212,7 +212,7 @@ http://127.0.0.1:8000/docs
 
 ---
 
-## Frontend
+## Frontend Setup
 
 ```bash
 cd frontend
@@ -222,7 +222,7 @@ npm install
 npm run dev
 ```
 
-Frontend:
+Frontend URL:
 
 ```text
 http://localhost:5173
@@ -246,55 +246,55 @@ VITE_API_URL=http://127.0.0.1:8000
 
 ## Authentication
 
-| Method | Endpoint         | Description   |
-| ------ | ---------------- | ------------- |
-| POST   | `/auth/register` | Register user |
-| POST   | `/auth/login`    | Login user    |
+| Method | Endpoint       | Description   |
+| ------ | -------------- | ------------- |
+| POST   | /auth/register | Register User |
+| POST   | /auth/login    | Login User    |
 
 ---
 
 ## Users
 
-| Method | Endpoint           | Description                                   |
-| ------ | ------------------ | --------------------------------------------- |
-| PUT    | `/users/{user_id}` | Update user profile and recompute eligibility |
+| Method | Endpoint         | Description                                   |
+| ------ | ---------------- | --------------------------------------------- |
+| PUT    | /users/{user_id} | Update User Profile and Recompute Eligibility |
 
 ---
 
 ## Tasks
 
-| Method | Endpoint           | Description |
-| ------ | ------------------ | ----------- |
-| POST   | `/tasks`           | Create task |
-| PUT    | `/tasks/{task_id}` | Update task |
-| DELETE | `/tasks/{task_id}` | Delete task |
+| Method | Endpoint         | Description |
+| ------ | ---------------- | ----------- |
+| POST   | /tasks           | Create Task |
+| PUT    | /tasks/{task_id} | Update Task |
+| DELETE | /tasks/{task_id} | Delete Task |
 
 ---
 
 ## Task Rules
 
-| Method | Endpoint                | Description |
-| ------ | ----------------------- | ----------- |
-| POST   | `/task-rules`           | Create rule |
-| PUT    | `/task-rules/{task_id}` | Update rule |
+| Method | Endpoint              | Description |
+| ------ | --------------------- | ----------- |
+| POST   | /task-rules           | Create Rule |
+| PUT    | /task-rules/{task_id} | Update Rule |
 
 ---
 
 ## Assignments
 
-| Method | Endpoint                               | Description            |
-| ------ | -------------------------------------- | ---------------------- |
-| POST   | `/tasks/{task_id}/compute-eligibility` | Compute eligible users |
-| GET    | `/tasks/{task_id}/eligible-users`      | Get eligible users     |
-| GET    | `/users/{user_id}/eligible-tasks`      | Get eligible tasks     |
+| Method | Endpoint                             | Description            |
+| ------ | ------------------------------------ | ---------------------- |
+| POST   | /tasks/{task_id}/compute-eligibility | Compute Eligible Users |
+| GET    | /tasks/{task_id}/eligible-users      | Get Eligible Users     |
+| GET    | /users/{user_id}/eligible-tasks      | Get Eligible Tasks     |
 
 ---
 
 ## Dashboard
 
-| Method | Endpoint           | Description          |
-| ------ | ------------------ | -------------------- |
-| GET    | `/dashboard/stats` | Dashboard statistics |
+| Method | Endpoint         | Description          |
+| ------ | ---------------- | -------------------- |
+| GET    | /dashboard/stats | Dashboard Statistics |
 
 ---
 
@@ -309,7 +309,7 @@ VITE_API_URL=http://127.0.0.1:8000
 }
 ```
 
-## Frontend
+### Frontend
 
 JWT token is stored in:
 
@@ -325,28 +325,28 @@ Authorization: Bearer <token>
 
 to authenticated requests.
 
-## Backend
+### Backend
 
 Uses:
 
 * OAuth2 Password Bearer
-* JWT validation
-* Current user resolution via dependency injection
+* JWT Validation
+* Current User Resolution via Dependency Injection
 
 ---
 
 # Sample Workflow
 
-1. Register a user
-2. Login and receive JWT token
-3. Create a task
-4. Create a rule
-5. Eligible users are automatically computed
-6. Update users or rules
-7. Assignments automatically refresh
-8. View eligible users
-9. View eligible tasks
-10. Review dashboard statistics
+1. Register a User
+2. Login and Receive JWT Token
+3. Create a Task
+4. Create a Rule
+5. Eligible Users are Automatically Computed
+6. Update Users or Rules
+7. Assignments Automatically Refresh
+8. View Eligible Users
+9. View Eligible Tasks
+10. Review Dashboard Statistics
 
 ---
 
@@ -399,10 +399,10 @@ Current implementation stores all eligible users for a task.
 
 Potential future enhancements:
 
-* Least-loaded user assignment
-* Round-robin assignment
-* Priority-based assignment
-* Workload balancing algorithms
+* Least-Loaded User Assignment
+* Round-Robin Assignment
+* Priority-Based Assignment
+* Workload Balancing Algorithms
 
 ---
 
@@ -411,11 +411,34 @@ Potential future enhancements:
 | Screen         | Purpose                         |
 | -------------- | ------------------------------- |
 | Login          | Authentication                  |
-| Dashboard      | Metrics and overview            |
-| Create Task    | Create tasks                    |
-| Create Rule    | Create eligibility rules        |
-| Eligible Users | Compute and view eligible users |
-| Eligible Tasks | View eligible tasks for a user  |
+| Dashboard      | Metrics and Overview            |
+| Create Task    | Create Tasks                    |
+| Create Rule    | Create Eligibility Rules        |
+| Eligible Users | Compute and View Eligible Users |
+| Eligible Tasks | View Eligible Tasks for a User  |
+
+---
+
+# Development Environment Considerations
+
+This solution was developed and validated in a corporate-managed environment with restrictions on installing containerization and infrastructure tooling.
+
+As a result:
+
+* Docker Desktop was not available for installation.
+* Redis services could not be provisioned locally.
+* Background worker frameworks such as Celery/RQ were not configured.
+* SQLite was used for local development and demonstration purposes.
+
+The application architecture has been intentionally designed using a layered Router → Service → Repository pattern, enabling straightforward future integration of:
+
+* PostgreSQL
+* Redis Caching
+* Celery/RQ Background Processing
+* Docker-Based Deployment
+* Kubernetes Orchestration
+
+The current implementation focuses on delivering the complete functional requirements while documenting the scalability roadmap for production deployment.
 
 ---
 
@@ -443,17 +466,19 @@ npm run preview
 
 # Future Enhancements
 
-* PostgreSQL migration
-* Redis caching
-* Background workers (Celery/RQ)
-* Role-based authorization
-* User management UI
-* Audit logging
-* Notifications
-* Search and filtering
+* PostgreSQL Migration
+* Redis Caching
+* Background Workers (Celery/RQ)
+* Role-Based Authorization (RBAC)
+* User Management UI
+* Audit Logging
+* Email/Slack Notifications
+* Search and Filtering
 * Pagination
-* Docker deployment
-* Kubernetes deployment
+* Docker Deployment
+* Kubernetes Deployment
+* Least-Loaded User Assignment Strategy
+* Round-Robin Assignment Strategy
 
 ---
 
