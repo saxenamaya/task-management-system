@@ -468,5 +468,3 @@ npm run preview
 # Author
 
 **Mayank Saxena**
-
-QA Architect | AI-Driven Quality Engineering | Mobile Testing Specialist
